@@ -115,8 +115,8 @@ function initExamples() {
     document.querySelector('#example-count').textContent = `${idx + 1} / ${DATA.examples.length}`;
     document.querySelector('#example-title').textContent = ex.title;
     document.querySelector('#example-scenario').textContent = ex.scenario;
-    document.querySelector('#example-culture').textContent = ex.culture;
-    document.querySelector('#example-preference').textContent = ex.preference;
+    document.querySelector('#example-culture').innerHTML = `<span class="example-choice-label">Follow culture</span>${ex.culture.replace(/^Follow culture:\s*/i, '')}`;
+    document.querySelector('#example-preference').innerHTML = `<span class="example-choice-label">Allow preference</span>${ex.preference.replace(/^Allow preference:\s*/i, '')}`;
     document.querySelector('#example-note').textContent = ex.note;
   };
   document.querySelectorAll('[data-example-dir]').forEach(btn => btn.addEventListener('click', () => {

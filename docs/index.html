@@ -57,7 +57,6 @@
           </div>
         </div>
         <div class="scenario-card">
-          <span class="tag">Interactive PACT item</span>
           <h2>Host-home etiquette</h2>
           <p>A guest visits a host in Japan. The cultural expectation is to remove shoes, while the guest prefers to keep shoes on.</p>
           <div class="choice-grid">
@@ -118,6 +117,7 @@
         <div id="model-chart" class="bar-chart" aria-live="polite"></div>
         <div id="region-chart" class="bar-chart hidden" aria-live="polite"></div>
         <div id="significance-table" class="table-wrap hidden" aria-live="polite"></div>
+        <p class="model-version-note">Model versions follow the paper: Llama-3.1-8B, GPT-5.4-mini, DeepSeek-7B-Chat, OLMo-2-7B, Qwen-3-4B, and Mistral-7B-v0.3.</p>
       </div>
       <div class="takeaway-grid">
         <div class="takeaway-box"><strong>Takeaway 1</strong><p>Model family dominates the culture/preference trade-off: Mistral and OLMo are highly norm-rigid, while Llama is more preference-allowing.</p></div>
@@ -131,34 +131,21 @@
         <h2>Annotation questions</h2>
         <div class="question-list" aria-label="Human annotation questions">
           <div class="question-item">
-            <span class="q-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4 0-7 2-7 4.5V20h14v-1.5C19 16 16 14 12 14Z"/></svg>
-            </span>
+            <span class="question-index" aria-hidden="true">01</span>
             <div>
               <strong>Personal choice</strong>
               <p>What would you personally do if you were the actor?</p>
             </div>
           </div>
           <div class="question-item">
-            <span class="q-icon norm-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M4 20h16v-2H4v2Zm3-4h10l-5-12-5 12Zm5-7 2 5h-4l2-5Z"/></svg>
-            </span>
+            <span class="question-index" aria-hidden="true">02</span>
             <div>
               <strong>Norm judgment</strong>
               <p>What would most people in this situation consider appropriate?</p>
             </div>
           </div>
-          <div class="question-item">
-            <span class="q-icon agreement-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M9 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3Zm6 0a3 3 0 1 0-3-3 3 3 0 0 0 3 3ZM9 13c-3.3 0-6 1.8-6 4v2h12v-2c0-2.2-2.7-4-6-4Zm6 0c-.5 0-1 .04-1.4.12 1.5 1 2.4 2.3 2.4 3.88v2h5v-2c0-2.2-2.7-4-6-4Z"/></svg>
-            </span>
-            <div>
-              <strong>Agreement</strong>
-              <p>How much do participants converge on the same option?</p>
-            </div>
-          </div>
         </div>
-        <div class="takeaway-box compact-box"><strong>Finding</strong><p>Majority labels hide meaningful disagreement, so we evaluate distributions and uncertainty in addition to majority alignment.</p></div>
+        <div class="takeaway-box compact-box"><strong>Agreement measure</strong><p>After collecting answers, we measure how much participants converge on the same option. This is an analysis metric, not a separate annotation question.</p></div>
       </div>
       <div>
         <p class="eyebrow">Human study</p>
