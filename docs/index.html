@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260603-0129" />
+  <link rel="stylesheet" href="styles.css?v=20260603-1801" />
 </head>
 <body>
   <header class="site-header">
@@ -37,24 +37,15 @@
           <a class="button disabled" href="#" aria-disabled="true">Dataset coming soon</a>
         </div>
       </div>
-      <div class="hero-panel" aria-label="Animated PACT scenario visualization">
-        <div class="flow-card refined-flow" aria-label="PACT decision flow">
-          <div class="flow-source culture-source">
-            <span>cultural expectation</span>
-            <strong>Remove shoes</strong>
+      <div class="hero-panel" aria-label="PACT scenario visualization">
+        <div class="scenario-card">
+          <h2>Host-home etiquette</h2>
+          <p>A guest visits a host in Japan. The cultural expectation is to remove shoes, while the guest prefers to keep shoes on.</p>
+          <div class="choice-grid">
+            <button type="button" class="choice active" data-choice="culture">Follow culture</button>
+            <button type="button" class="choice" data-choice="preference">Allow preference</button>
           </div>
-          <div class="flow-core">
-            <span class="flow-badge">PACT item</span>
-            <p>One scenario with two plausible alignment targets</p>
-          </div>
-          <div class="flow-source preference-source">
-            <span>personal preference</span>
-            <strong>Keep shoes on</strong>
-          </div>
-          <div class="flow-choices" aria-hidden="true">
-            <span>Follow culture</span>
-            <span>Allow preference</span>
-          </div>
+          <p id="choice-explainer" class="choice-explainer">Follow the host-home norm and advise removing shoes.</p>
         </div>
       </div>
     </section>
@@ -199,7 +190,7 @@
     <p class="muted">University of Michigan · University of Copenhagen</p>
   </footer>
 
-  <script src="data.js?v=20260603-0129"></script>
-  <script src="script.js?v=20260603-0129"></script>
+  <script src="data.js?v=20260603-1801"></script>
+  <script src="script.js?v=20260603-1801"></script>
 </body>
 </html>

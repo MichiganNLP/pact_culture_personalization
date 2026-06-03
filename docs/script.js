@@ -126,6 +126,18 @@ function initExamples() {
   set();
 }
 
+function initHeroChoice() {
+  const text = {
+    culture: 'Follow the host-home norm and advise removing shoes.',
+    preference: 'Allow the guest to keep shoes on because the stated preference is personally important.'
+  };
+  document.querySelectorAll('.choice').forEach(btn => btn.addEventListener('click', () => {
+    document.querySelectorAll('.choice').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelector('#choice-explainer').textContent = text[btn.dataset.choice];
+  }));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderModelCharts();
   renderHumanChart();
@@ -133,4 +145,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initModelTabs();
   initAlignmentTabs();
   initExamples();
+  initHeroChoice();
 });

@@ -54,24 +54,15 @@ h3 { margin: 0 0 10px; font-size: 21px; }
 .button.primary { background: var(--ink); color: white; border-color: var(--ink); }
 .button.disabled { color: #718096; background: #f8fafc; cursor: not-allowed; }
 .hero-panel { display: grid; gap: 18px; padding: 22px; border: 1px solid var(--line); background: linear-gradient(135deg, rgba(233,221,255,.9), rgba(204,251,241,.75)); box-shadow: var(--shadow); border-radius: 8px; }
-.flow-card, .interactive-example, .chart-shell, .figure-preview, .annotation-card, .takeaway-box, .cite-section pre { background: rgba(255,255,255,.88); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
-.flow-card { position: relative; overflow: hidden; }
-.refined-flow { display: grid; grid-template-columns: 1fr 1.08fr 1fr; gap: 12px; align-items: stretch; padding: 16px; }
-.refined-flow::before { content: ""; position: absolute; inset: 15px 20%; top: 50%; height: 2px; background: linear-gradient(90deg, var(--teal), var(--lilac), var(--salmon)); opacity: .5; animation: pulseLine 2.4s ease-in-out infinite; }
-.flow-source, .flow-core, .flow-choices span { position: relative; z-index: 1; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.92); }
-.flow-source { display: grid; align-content: center; gap: 6px; min-height: 104px; padding: 14px; }
-.flow-source span, .flow-badge { color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-.flow-source strong { font-size: 16px; line-height: 1.2; }
-.culture-source { box-shadow: inset 0 0 0 2px rgba(240,138,138,.16); }
-.preference-source { box-shadow: inset 0 0 0 2px rgba(45,212,191,.18); }
-.flow-core { display: grid; place-items: center; gap: 6px; min-height: 104px; padding: 16px; text-align: center; background: var(--ink); color: white; border-color: rgba(255,255,255,.28); }
-.flow-core p { margin: 0; line-height: 1.35; font-weight: 750; }
-.flow-core .flow-badge { color: var(--teal); }
-.flow-choices { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.flow-choices span { padding: 11px 12px; text-align: center; font-weight: 800; font-size: 13px; }
-.flow-choices span:first-child { background: #ffe4e6; color: #9f1239; border-color: #fecdd3; }
-.flow-choices span:last-child { background: #ccfbf1; color: #115e59; border-color: #99f6e4; }
-@keyframes pulseLine { 0%, 100% { opacity: .28; transform: scaleX(.82); } 50% { opacity: .72; transform: scaleX(1); } }
+.scenario-card, .interactive-example, .chart-shell, .figure-preview, .annotation-card, .takeaway-box, .cite-section pre { background: rgba(255,255,255,.88); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
+.scenario-card { padding: 24px; }
+.scenario-card h2 { font-size: clamp(22px, 2.4vw, 32px); line-height: 1.08; }
+.choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 22px 0 12px; }
+.choice, .choice, .segmented button, .icon-button { cursor: pointer; border: 1px solid var(--line); border-radius: 8px; background: white; font-weight: 750; }
+.choice { padding: 14px 10px; }
+.choice.active[data-choice="culture"] { background: #ffe4e6; border-color: #fda4af; }
+.choice.active[data-choice="preference"] { background: #ccfbf1; border-color: var(--teal); }
+.choice-explainer { color: var(--muted); min-height: 48px; }
 .tag, .pill { display: inline-flex; align-items: center; border-radius: 999px; padding: 5px 9px; font-size: 12px; font-weight: 800; }
 .tag { background: var(--lavender); color: #5b21b6; }
 .pill.culture { background: #ffe4e6; color: #9f1239; }
@@ -140,8 +131,7 @@ footer { padding: 38px clamp(18px, 6vw, 82px); border-top: 1px solid var(--line)
 @media (max-width: 620px) {
   .metric-strip, .takeaway-grid { grid-template-columns: 1fr; }
   .bar-row { grid-template-columns: 1fr; gap: 6px; }
-  .refined-flow, .flow-choices { grid-template-columns: 1fr; }
-  .refined-flow::before { inset: 18% 50%; width: 2px; height: 64%; transform: none; }
+  .choice-grid { grid-template-columns: 1fr; }
 }
 
 .example-choice-label { display: block; margin-bottom: 4px; font-size: 11px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; color: #4c1d95; }
