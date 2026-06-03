@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PACT | Culture and Personalization in LLMs</title>
+  <meta name="description" content="Interactive project page for Whose Norms? Disentangling Cultural and Personal Alignment in Large Language Models." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top"><span class="brand-mark">P</span><span>PACT</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#framework">Framework</a>
+      <a href="#results">Results</a>
+      <a href="#human-study">Human study</a>
+      <a href="#alignment">Alignment</a>
+      <a href="#release">Release</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Culture x personalization benchmark</p>
+        <h1>Whose Norms?</h1>
+        <p class="subtitle">Disentangling cultural and personal alignment in large language models.</p>
+        <p class="summary">PACT evaluates whether models follow cultural expectations or allow personal preferences when both are relevant and may conflict.</p>
+        <div class="button-row">
+          <a class="button primary" href="assets/paper.pdf">Paper PDF</a>
+          <a class="button" href="#results">Explore results</a>
+          <a class="button" href="#release">Release steps</a>
+        </div>
+      </div>
+      <div class="hero-panel" aria-label="PACT scenario preview">
+        <div class="scenario-card">
+          <span class="tag">Example PACT item</span>
+          <h2>Host-home etiquette</h2>
+          <p>A guest visits a host in Japan. The cultural expectation is to remove shoes, while the guest prefers to keep shoes on.</p>
+          <div class="choice-grid">
+            <button class="choice active" data-choice="culture">Follow culture</button>
+            <button class="choice" data-choice="preference">Allow preference</button>
+          </div>
+          <p id="choice-explainer" class="choice-explainer">Follow the host-home norm and advise removing shoes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="metric-strip" aria-label="Key findings">
+      <div><strong>7.8 pp</strong><span>country/context spread</span></div>
+      <div><strong>1.0 pp</strong><span>average age effect</span></div>
+      <div><strong>0.7 pp</strong><span>average gender effect</span></div>
+      <div><strong>0.24</strong><span>best uncertainty corr.</span></div>
+    </section>
+
+    <section id="framework" class="section two-col">
+      <div>
+        <p class="eyebrow">Framework</p>
+        <h2>One item, two plausible actions</h2>
+        <p>Each PACT instance contains a scenario, actor, receiver, demographic attributes, a cultural expectation, and a personal preference. Models choose between <span class="pill culture">Follow Culture</span> and <span class="pill preference">Allow Preference</span>.</p>
+      </div>
+      <div class="interactive-example">
+        <div class="toolbar">
+          <button class="icon-button" data-example-dir="prev" aria-label="Previous example">‹</button>
+          <span id="example-count">1 / 3</span>
+          <button class="icon-button" data-example-dir="next" aria-label="Next example">›</button>
+        </div>
+        <h3 id="example-title"></h3>
+        <p id="example-scenario"></p>
+        <div class="option-list">
+          <p id="example-culture"></p>
+          <p id="example-preference"></p>
+        </div>
+        <p id="example-note" class="muted"></p>
+      </div>
+    </section>
+
+    <section id="results" class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Model behavior</p>
+          <h2>Models differ in norm rigidity</h2>
+        </div>
+        <div class="segmented" role="tablist" aria-label="Model behavior view">
+          <button class="active" data-view="models">Models</button>
+          <button data-view="regions">Regions</button>
+          <button data-view="significance">Significance</button>
+        </div>
+      </div>
+      <div class="chart-shell">
+        <div id="model-chart" class="bar-chart" aria-live="polite"></div>
+        <div id="region-chart" class="bar-chart hidden" aria-live="polite"></div>
+        <div id="significance-table" class="table-wrap hidden" aria-live="polite"></div>
+      </div>
+      <figure class="figure-preview">
+        <img src="assets/section4_model_tendencies.png" alt="Model behavior plot" />
+        <figcaption>Model behavior varies much more by model family and country context than by demographic cues.</figcaption>
+      </figure>
+    </section>
+
+    <section id="human-study" class="section two-col reverse">
+      <div>
+        <p class="eyebrow">Human study</p>
+        <h2>Humans are not a single label</h2>
+        <p>Five-country human responses show modest norm-personal gaps overall, but country-specific reversals. Same-country judgments have lower agreement than close/far contexts, indicating within-culture pluralism.</p>
+        <div id="human-country-chart" class="dot-chart"></div>
+      </div>
+      <figure class="figure-preview compact">
+        <img src="assets/section5_human.png" alt="Human rates and agreement plot" />
+      </figure>
+    </section>
+
+    <section id="alignment" class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Human-LLM alignment</p>
+          <h2>Majority agreement is not enough</h2>
+        </div>
+        <select id="alignment-metric" aria-label="Alignment metric">
+          <option value="majority">Majority alignment</option>
+          <option value="mae">Rate-alignment MAE</option>
+          <option value="gap">Signed culture-rate gap</option>
+          <option value="uncertainty">Uncertainty correlation</option>
+        </select>
+      </div>
+      <div id="alignment-chart" class="bar-chart"></div>
+      <figure class="figure-preview">
+        <img src="assets/section5_alignment.png" alt="Alignment and uncertainty plot" />
+        <figcaption>Models can match majority choices while missing response distributions and uncertainty.</figcaption>
+      </figure>
+    </section>
+
+    <section id="release" class="section release-grid">
+      <div>
+        <p class="eyebrow">Release plan</p>
+        <h2>Clean code, site, and Hugging Face data</h2>
+        <p>This site is static and deployable with GitHub Pages. Keep model outputs and release data separate from heavy scratch artifacts; publish cleaned benchmark/data splits to Hugging Face Datasets.</p>
+      </div>
+      <div class="checklist">
+        <label><input type="checkbox"> Create GitHub repository</label>
+        <label><input type="checkbox"> Commit `paper_site/`, clean scripts, and README</label>
+        <label><input type="checkbox"> Enable GitHub Pages from `main` / `paper_site` or `docs`</label>
+        <label><input type="checkbox"> Create Hugging Face dataset repo</label>
+        <label><input type="checkbox"> Upload cleaned CSV/JSONL files and dataset card</label>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>PACT</strong> · Personal-Preference and Cultural-Norm Trade-off framework</p>
+    <p class="muted">University of Michigan · University of Copenhagen</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
