@@ -2,32 +2,38 @@ window.PACT_DATA = {
   "modelBehavior": [
     {
       "model": "Llama-3.1-8B",
-      "allow": 34.2,
-      "culture": 65.8,
+      "allow": 39.5,
+      "culture": 60.5,
       "modelShort": "Llama"
     },
     {
+      "model": "GPT-5.4-mini",
+      "allow": 28.3,
+      "culture": 71.7,
+      "modelShort": "GPT"
+    },
+    {
       "model": "DeepSeek-7B-Chat",
-      "allow": 23.8,
-      "culture": 76.2,
+      "allow": 12.9,
+      "culture": 87.1,
       "modelShort": "DeepSeek"
     },
     {
-      "model": "Qwen-3-4B",
-      "allow": 12.6,
-      "culture": 87.4,
-      "modelShort": "Qwen"
-    },
-    {
       "model": "OLMo-2-7B",
-      "allow": 3.2,
-      "culture": 96.8,
+      "allow": 12.0,
+      "culture": 88.0,
       "modelShort": "OLMo"
     },
     {
+      "model": "Qwen-3-4B",
+      "allow": 10.5,
+      "culture": 89.5,
+      "modelShort": "Qwen"
+    },
+    {
       "model": "Mistral-7B-v0.3",
-      "allow": 0.8,
-      "culture": 99.2,
+      "allow": 0.7,
+      "culture": 99.3,
       "modelShort": "Mistral"
     }
   ],
