@@ -4,19 +4,19 @@ const maxOf = (arr, key) => Math.max(...arr.map(d => Math.abs(d[key])));
 const alignmentNotes = {
   majority: {
     title: 'Majority alignment',
-    text: 'Does the model pick the same option as the human majority? This is the easiest alignment metric and can look high even when the model misses disagreement.'
+    text: 'Agreement with the human-majority option, averaged across personal-choice and norm-judgment frames for each model.'
   },
   mae: {
     title: 'Rate-alignment MAE',
-    text: 'Does the model match the human culture-following rate? Lower is better. This metric captures distributional mismatch beyond majority choice.'
+    text: 'Absolute difference between model and human culture-following rates. Lower values mean the model better matches the human response distribution.'
   },
   gap: {
     title: 'Signed culture-rate gap',
-    text: 'Positive values mean the model over-selects culture relative to humans; negative values mean it over-selects personal preference.'
+    text: 'Model minus human culture-following rate. Positive values indicate more culture-following than humans; negative values indicate more preference-allowing.'
   },
   uncertainty: {
     title: 'Uncertainty correlation',
-    text: 'Does model disagreement across persona-conditioned runs occur on the same items where humans disagree? Higher is better, but correlations remain weak.'
+    text: 'Correlation between human agreement and persona-conditioned model agreement on the same items. Higher values mean model variation better tracks human disagreement.'
   }
 };
 
@@ -28,7 +28,7 @@ function barChart(el, rows, options = {}) {
     const cls = v < 0 ? 'negative' : '';
     const suffix = options.suffix ?? '%';
     return `<div class="bar-row">
-      <div class="bar-label">${row.label}</div>
+      <div class="bar-label" title="${row.label}">${row.label}</div>
       <div class="bar-track"><div class="bar-fill ${cls}" style="width:${pct}%"></div></div>
       <div class="bar-value">${v}${suffix}</div>
     </div>`;
@@ -97,12 +97,14 @@ function initModelTabs() {
 }
 
 function initAlignmentTabs() {
-  document.querySelectorAll('[data-align]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('[data-align]').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderAlignment(btn.dataset.align);
-    });
+  const group = document.querySelector('[aria-label="Alignment metric view"]');
+  if (!group) return;
+  group.addEventListener('click', event => {
+    const btn = event.target.closest('[data-align]');
+    if (!btn) return;
+    group.querySelectorAll('[data-align]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderAlignment(btn.dataset.align);
   });
 }
 

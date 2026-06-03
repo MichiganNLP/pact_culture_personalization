@@ -1,29 +1,34 @@
 window.PACT_DATA = {
   "modelBehavior": [
     {
-      "model": "Llama",
+      "model": "Llama 3.1 8B Instruct",
       "allow": 34.2,
-      "culture": 65.8
+      "culture": 65.8,
+      "modelShort": "Llama"
     },
     {
-      "model": "DeepSeek",
+      "model": "DeepSeek 7B Chat",
       "allow": 23.8,
-      "culture": 76.2
+      "culture": 76.2,
+      "modelShort": "DeepSeek"
     },
     {
-      "model": "Qwen",
+      "model": "Qwen3 4B Instruct",
       "allow": 12.6,
-      "culture": 87.4
+      "culture": 87.4,
+      "modelShort": "Qwen"
     },
     {
-      "model": "OLMo",
+      "model": "OLMo2 7B Instruct",
       "allow": 3.2,
-      "culture": 96.8
+      "culture": 96.8,
+      "modelShort": "OLMo"
     },
     {
-      "model": "Mistral",
+      "model": "Mistral 7B Instruct v0.3",
       "allow": 0.8,
-      "culture": 99.2
+      "culture": 99.2,
+      "modelShort": "Mistral"
     }
   ],
   "regionEffects": [
@@ -121,232 +126,268 @@ window.PACT_DATA = {
   ],
   "alignmentAvg": [
     {
-      "model": "GPT",
+      "model": "GPT-5.4 mini",
       "majority": 84.4,
       "mae": 0.255,
-      "cultureGap": 14.5
+      "cultureGap": 14.5,
+      "modelShort": "GPT"
     },
     {
-      "model": "Qwen",
+      "model": "Qwen3 4B Instruct",
       "majority": 80.7,
       "mae": 0.27,
-      "cultureGap": 18.8
+      "cultureGap": 18.8,
+      "modelShort": "Qwen"
     },
     {
-      "model": "Llama",
+      "model": "Llama 3.1 8B Instruct",
       "majority": 76.1,
       "mae": 0.319,
-      "cultureGap": 9.1
+      "cultureGap": 9.1,
+      "modelShort": "Llama"
     },
     {
-      "model": "Mistral",
+      "model": "Mistral 7B Instruct v0.3",
       "majority": 71.0,
       "mae": 0.349,
-      "cultureGap": 0.6
+      "cultureGap": 0.6,
+      "modelShort": "Mistral"
     },
     {
-      "model": "DeepSeek",
+      "model": "DeepSeek 7B Chat",
       "majority": 63.4,
       "mae": 0.409,
-      "cultureGap": -2.0
+      "cultureGap": -2.0,
+      "modelShort": "DeepSeek"
     },
     {
-      "model": "OLMo",
+      "model": "OLMo2 7B Instruct",
       "majority": 54.5,
       "mae": 0.471,
-      "cultureGap": -27.8
+      "cultureGap": -27.8,
+      "modelShort": "OLMo"
     }
   ],
   "alignmentFrame": [
     {
-      "model": "GPT",
+      "model": "GPT-5.4 mini",
       "frame": "Norm",
       "majority": 85.2,
       "mae": 0.246,
-      "cultureGap": 15.2
+      "cultureGap": 15.2,
+      "modelShort": "GPT"
     },
     {
-      "model": "Llama",
+      "model": "Llama 3.1 8B Instruct",
       "frame": "Norm",
       "majority": 83.0,
       "mae": 0.272,
-      "cultureGap": 15.2
+      "cultureGap": 15.2,
+      "modelShort": "Llama"
     },
     {
-      "model": "Qwen",
+      "model": "Qwen3 4B Instruct",
       "frame": "Norm",
       "majority": 82.4,
       "mae": 0.267,
-      "cultureGap": 21.5
+      "cultureGap": 21.5,
+      "modelShort": "Qwen"
     },
     {
-      "model": "Mistral",
+      "model": "Mistral 7B Instruct v0.3",
       "frame": "Norm",
       "majority": 80.7,
       "mae": 0.267,
-      "cultureGap": 16.4
+      "cultureGap": 16.4,
+      "modelShort": "Mistral"
     },
     {
-      "model": "DeepSeek",
+      "model": "DeepSeek 7B Chat",
       "frame": "Norm",
       "majority": 71.6,
       "mae": 0.355,
-      "cultureGap": 7.3
+      "cultureGap": 7.3,
+      "modelShort": "DeepSeek"
     },
     {
-      "model": "OLMo",
+      "model": "OLMo2 7B Instruct",
       "frame": "Norm",
       "majority": 61.9,
       "mae": 0.403,
-      "cultureGap": -18.3
+      "cultureGap": -18.3,
+      "modelShort": "OLMo"
     },
     {
-      "model": "GPT",
+      "model": "GPT-5.4 mini",
       "frame": "Personal",
       "majority": 83.5,
       "mae": 0.264,
-      "cultureGap": 13.8
+      "cultureGap": 13.8,
+      "modelShort": "GPT"
     },
     {
-      "model": "Qwen",
+      "model": "Qwen3 4B Instruct",
       "frame": "Personal",
       "majority": 79.0,
       "mae": 0.274,
-      "cultureGap": 16.1
+      "cultureGap": 16.1,
+      "modelShort": "Qwen"
     },
     {
-      "model": "Llama",
+      "model": "Llama 3.1 8B Instruct",
       "frame": "Personal",
       "majority": 69.3,
       "mae": 0.366,
-      "cultureGap": 3.0
+      "cultureGap": 3.0,
+      "modelShort": "Llama"
     },
     {
-      "model": "Mistral",
+      "model": "Mistral 7B Instruct v0.3",
       "frame": "Personal",
       "majority": 61.4,
       "mae": 0.432,
-      "cultureGap": -15.2
+      "cultureGap": -15.2,
+      "modelShort": "Mistral"
     },
     {
-      "model": "DeepSeek",
+      "model": "DeepSeek 7B Chat",
       "frame": "Personal",
       "majority": 55.1,
       "mae": 0.462,
-      "cultureGap": -11.2
+      "cultureGap": -11.2,
+      "modelShort": "DeepSeek"
     },
     {
-      "model": "OLMo",
+      "model": "OLMo2 7B Instruct",
       "frame": "Personal",
       "majority": 47.2,
       "mae": 0.539,
-      "cultureGap": -37.3
+      "cultureGap": -37.3,
+      "modelShort": "OLMo"
     }
   ],
   "uncertaintyAvg": [
     {
-      "model": "GPT",
+      "model": "GPT-5.4 mini",
       "corr": 0.241,
-      "modelAgreement": 90.6
+      "modelAgreement": 90.6,
+      "modelShort": "GPT"
     },
     {
-      "model": "Qwen",
+      "model": "Qwen3 4B Instruct",
       "corr": 0.194,
-      "modelAgreement": 95.9
+      "modelAgreement": 95.9,
+      "modelShort": "Qwen"
     },
     {
-      "model": "Llama",
+      "model": "Llama 3.1 8B Instruct",
       "corr": -0.032,
-      "modelAgreement": 96.8
+      "modelAgreement": 96.8,
+      "modelShort": "Llama"
     },
     {
-      "model": "Mistral",
+      "model": "Mistral 7B Instruct v0.3",
       "corr": 0.063,
-      "modelAgreement": 94.3
+      "modelAgreement": 94.3,
+      "modelShort": "Mistral"
     },
     {
-      "model": "DeepSeek",
+      "model": "DeepSeek 7B Chat",
       "corr": 0.058,
-      "modelAgreement": 91.5
+      "modelAgreement": 91.5,
+      "modelShort": "DeepSeek"
     },
     {
-      "model": "OLMo",
+      "model": "OLMo2 7B Instruct",
       "corr": -0.031,
-      "modelAgreement": 92.2
+      "modelAgreement": 92.2,
+      "modelShort": "OLMo"
     }
   ],
   "uncertaintyFrame": [
     {
-      "model": "DeepSeek",
+      "model": "DeepSeek 7B Chat",
       "frame": "Norm",
       "corr": 0.074,
-      "modelAgreement": 95.0
+      "modelAgreement": 95.0,
+      "modelShort": "DeepSeek"
     },
     {
-      "model": "DeepSeek",
+      "model": "DeepSeek 7B Chat",
       "frame": "Personal",
       "corr": 0.041,
-      "modelAgreement": 88.1
+      "modelAgreement": 88.1,
+      "modelShort": "DeepSeek"
     },
     {
-      "model": "GPT",
+      "model": "GPT-5.4 mini",
       "frame": "Norm",
       "corr": 0.229,
-      "modelAgreement": 98.0
+      "modelAgreement": 98.0,
+      "modelShort": "GPT"
     },
     {
-      "model": "GPT",
+      "model": "GPT-5.4 mini",
       "frame": "Personal",
       "corr": 0.253,
-      "modelAgreement": 83.2
+      "modelAgreement": 83.2,
+      "modelShort": "GPT"
     },
     {
-      "model": "Llama",
+      "model": "Llama 3.1 8B Instruct",
       "frame": "Norm",
       "corr": -0.071,
-      "modelAgreement": 97.7
+      "modelAgreement": 97.7,
+      "modelShort": "Llama"
     },
     {
-      "model": "Llama",
+      "model": "Llama 3.1 8B Instruct",
       "frame": "Personal",
       "corr": 0.007,
-      "modelAgreement": 95.9
+      "modelAgreement": 95.9,
+      "modelShort": "Llama"
     },
     {
-      "model": "Mistral",
+      "model": "Mistral 7B Instruct v0.3",
       "frame": "Norm",
       "corr": 0.157,
-      "modelAgreement": 98.8
+      "modelAgreement": 98.8,
+      "modelShort": "Mistral"
     },
     {
-      "model": "Mistral",
+      "model": "Mistral 7B Instruct v0.3",
       "frame": "Personal",
       "corr": -0.031,
-      "modelAgreement": 89.8
+      "modelAgreement": 89.8,
+      "modelShort": "Mistral"
     },
     {
-      "model": "OLMo",
+      "model": "OLMo2 7B Instruct",
       "frame": "Norm",
       "corr": 0.105,
-      "modelAgreement": 92.5
+      "modelAgreement": 92.5,
+      "modelShort": "OLMo"
     },
     {
-      "model": "OLMo",
+      "model": "OLMo2 7B Instruct",
       "frame": "Personal",
       "corr": -0.166,
-      "modelAgreement": 92.0
+      "modelAgreement": 92.0,
+      "modelShort": "OLMo"
     },
     {
-      "model": "Qwen",
+      "model": "Qwen3 4B Instruct",
       "frame": "Norm",
       "corr": 0.155,
-      "modelAgreement": 96.7
+      "modelAgreement": 96.7,
+      "modelShort": "Qwen"
     },
     {
-      "model": "Qwen",
+      "model": "Qwen3 4B Instruct",
       "frame": "Personal",
       "corr": 0.234,
-      "modelAgreement": 95.2
+      "modelAgreement": 95.2,
+      "modelShort": "Qwen"
     }
   ],
   "significance": [

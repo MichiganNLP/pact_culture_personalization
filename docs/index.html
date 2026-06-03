@@ -12,12 +12,13 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#top"><span class="brand-mark">P</span><span>PACT</span></a>
+    <a class="brand text-brand" href="#top"><span>PACT</span></a>
     <nav aria-label="Main navigation">
       <a href="#framework">Framework</a>
       <a href="#results">Model behavior</a>
       <a href="#human-study">Human study</a>
       <a href="#alignment">Human-LLM alignment</a>
+      <a href="#takeaways">Takeaways</a>
       <a href="#cite">Citation</a>
     </nav>
   </header>
@@ -25,12 +26,11 @@
   <main id="top">
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Culture x personalization benchmark</p>
         <h1>Whose Norms?</h1>
         <p class="subtitle">Disentangling cultural and personal alignment in large language models.</p>
         <p class="authors">Angana Borah<sup>1</sup>, Isabelle Augenstein<sup>2</sup>, Rada Mihalcea<sup>1</sup></p>
         <p class="affiliations"><sup>1</sup>University of Michigan - Ann Arbor &nbsp; <sup>2</sup>University of Copenhagen</p>
-        <p class="summary">PACT evaluates whether models follow cultural expectations or allow personal preferences when both are relevant and may conflict.</p>
+        <p class="summary">PACT (Personal-Preference and Cultural-Norm Trade-off) evaluates whether models follow cultural expectations or allow personal preferences when both are relevant and may conflict.</p>
         <div class="button-row">
           <a class="button primary" href="assets/paper.pdf">Paper</a>
           <a class="button" href="https://github.com/MichiganNLP/pact_culture_personalization">Code</a>
@@ -38,20 +38,31 @@
         </div>
       </div>
       <div class="hero-panel" aria-label="Animated PACT scenario visualization">
-        <div class="flow-card">
-          <div class="flow-node actor">Actor preference</div>
-          <div class="flow-line"></div>
-          <div class="flow-node scenario">PACT scenario</div>
-          <div class="flow-line teal"></div>
-          <div class="flow-node receiver">Cultural norm</div>
+        <div class="flow-card refined-flow" aria-label="PACT decision flow">
+          <div class="flow-source culture-source">
+            <span>cultural expectation</span>
+            <strong>Remove shoes</strong>
+          </div>
+          <div class="flow-core">
+            <span class="flow-badge">PACT item</span>
+            <p>One scenario with two plausible alignment targets</p>
+          </div>
+          <div class="flow-source preference-source">
+            <span>personal preference</span>
+            <strong>Keep shoes on</strong>
+          </div>
+          <div class="flow-choices" aria-hidden="true">
+            <span>Follow culture</span>
+            <span>Allow preference</span>
+          </div>
         </div>
         <div class="scenario-card">
           <span class="tag">Interactive PACT item</span>
           <h2>Host-home etiquette</h2>
           <p>A guest visits a host in Japan. The cultural expectation is to remove shoes, while the guest prefers to keep shoes on.</p>
           <div class="choice-grid">
-            <button class="choice active" data-choice="culture">Follow culture</button>
-            <button class="choice" data-choice="preference">Allow preference</button>
+            <button type="button" class="choice active" data-choice="culture">Follow culture</button>
+            <button type="button" class="choice" data-choice="preference">Allow preference</button>
           </div>
           <p id="choice-explainer" class="choice-explainer">Follow the host-home norm and advise removing shoes.</p>
         </div>
@@ -77,9 +88,9 @@
       </div>
       <div class="interactive-example">
         <div class="toolbar">
-          <button class="icon-button" data-example-dir="prev" aria-label="Previous example">‹</button>
+          <button type="button" class="icon-button" data-example-dir="prev" aria-label="Previous example">‹</button>
           <span id="example-count">1 / 3</span>
-          <button class="icon-button" data-example-dir="next" aria-label="Next example">›</button>
+          <button type="button" class="icon-button" data-example-dir="next" aria-label="Next example">›</button>
         </div>
         <h3 id="example-title"></h3>
         <p id="example-scenario"></p>
@@ -98,9 +109,9 @@
           <h2>Models differ in norm rigidity</h2>
         </div>
         <div class="segmented" role="tablist" aria-label="Model behavior view">
-          <button class="active" data-view="models">Models</button>
-          <button data-view="regions">Country context</button>
-          <button data-view="significance">Significance</button>
+          <button type="button" class="active" data-view="models">Models</button>
+          <button type="button" data-view="regions">Country context</button>
+          <button type="button" data-view="significance">Significance</button>
         </div>
       </div>
       <div class="chart-shell">
@@ -114,22 +125,47 @@
       </div>
     </section>
 
-    <section id="human-study" class="section two-col reverse">
+    <section id="human-study" class="section two-col human-study-grid">
+      <div class="annotation-card survey-card">
+        <p class="eyebrow">Human study</p>
+        <h2>Annotation questions</h2>
+        <div class="question-list" aria-label="Human annotation questions">
+          <div class="question-item">
+            <span class="q-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4 0-7 2-7 4.5V20h14v-1.5C19 16 16 14 12 14Z"/></svg>
+            </span>
+            <div>
+              <strong>Personal choice</strong>
+              <p>What would you personally do if you were the actor?</p>
+            </div>
+          </div>
+          <div class="question-item">
+            <span class="q-icon norm-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 20h16v-2H4v2Zm3-4h10l-5-12-5 12Zm5-7 2 5h-4l2-5Z"/></svg>
+            </span>
+            <div>
+              <strong>Norm judgment</strong>
+              <p>What would most people in this situation consider appropriate?</p>
+            </div>
+          </div>
+          <div class="question-item">
+            <span class="q-icon agreement-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3Zm6 0a3 3 0 1 0-3-3 3 3 0 0 0 3 3ZM9 13c-3.3 0-6 1.8-6 4v2h12v-2c0-2.2-2.7-4-6-4Zm6 0c-.5 0-1 .04-1.4.12 1.5 1 2.4 2.3 2.4 3.88v2h5v-2c0-2.2-2.7-4-6-4Z"/></svg>
+            </span>
+            <div>
+              <strong>Agreement</strong>
+              <p>How much do participants converge on the same option?</p>
+            </div>
+          </div>
+        </div>
+        <div class="takeaway-box compact-box"><strong>Finding</strong><p>Majority labels hide meaningful disagreement, so we evaluate distributions and uncertainty in addition to majority alignment.</p></div>
+      </div>
       <div>
         <p class="eyebrow">Human study</p>
         <h2>Humans are not a single label</h2>
         <p>Participants from five countries answered paired survey questions for each scenario: what they would personally do, and what most people would consider socially appropriate. This separates personal choice from norm judgment rather than forcing a single ground-truth label.</p>
         <p>Same-country judgments have lower agreement than close/far contexts, suggesting greater within-culture pluralism when people reason about their own cultural contexts.</p>
         <div id="human-country-chart" class="dot-chart"></div>
-      </div>
-      <div class="annotation-card">
-        <h3>Annotation questions</h3>
-        <ul>
-          <li><strong>Personal choice:</strong> What would you personally do if you were the actor?</li>
-          <li><strong>Norm judgment:</strong> What would most people in this situation consider appropriate?</li>
-          <li><strong>Agreement:</strong> How much do participants converge on the same option?</li>
-        </ul>
-        <div class="takeaway-box compact-box"><strong>Finding</strong><p>Majority labels hide meaningful disagreement, so we evaluate distributions and uncertainty in addition to majority alignment.</p></div>
       </div>
     </section>
 
@@ -140,10 +176,10 @@
           <h2>Majority agreement is not enough</h2>
         </div>
         <div class="segmented" role="tablist" aria-label="Alignment metric view">
-          <button class="active" data-align="majority">Majority</button>
-          <button data-align="mae">Rate MAE</button>
-          <button data-align="gap">Culture gap</button>
-          <button data-align="uncertainty">Uncertainty</button>
+          <button type="button" class="active" data-align="majority">Majority</button>
+          <button type="button" data-align="mae">Rate MAE</button>
+          <button type="button" data-align="gap">Culture gap</button>
+          <button type="button" data-align="uncertainty">Uncertainty</button>
         </div>
       </div>
       <div class="alignment-layout">
@@ -151,8 +187,19 @@
         <div id="alignment-interpretation" class="takeaway-box metric-note"></div>
       </div>
       <div class="takeaway-grid">
-        <div class="takeaway-box"><strong>Distributional view</strong><p>Models can match the human-majority option while missing the rate at which humans choose culture versus preference.</p></div>
-        <div class="takeaway-box"><strong>Uncertainty view</strong><p>Persona-conditioned models should vary on the same items humans disagree on, but correlations remain weak.</p></div>
+        <div class="takeaway-box"><strong>Why multiple metrics?</strong><p>Majority alignment checks the selected side; rate MAE and signed gap check whether the model captures how often humans choose culture versus preference.</p></div>
+        <div class="takeaway-box"><strong>What changes with persona?</strong><p>The alignment chart averages personal-choice and norm-judgment frames per model, so the comparison focuses on overall model behavior rather than one survey wording.</p></div>
+      </div>
+    </section>
+
+    <section id="takeaways" class="section">
+      <p class="eyebrow">Main takeaways</p>
+      <h2>What we learn from PACT</h2>
+      <div class="takeaway-grid final-grid">
+        <div class="takeaway-box"><strong>1. Models encode different trade-offs</strong><p>Open-weight models range from highly culture-following to more preference-allowing, so model choice changes the normative behavior users see.</p></div>
+        <div class="takeaway-box"><strong>2. Context matters more than demographics</strong><p>Country and scenario context produce larger shifts than actor or receiver age/gender effects, which are measurable but small.</p></div>
+        <div class="takeaway-box"><strong>3. Human judgments are plural</strong><p>Same-country contexts show lower agreement than close/far contexts, pointing to within-culture variation rather than one fixed national label.</p></div>
+        <div class="takeaway-box"><strong>4. Alignment is distributional</strong><p>Majority choice, culture-following rates, signed gaps, and uncertainty each capture a different part of human-LLM alignment.</p></div>
       </div>
     </section>
 
