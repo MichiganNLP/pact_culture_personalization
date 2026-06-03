@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PACT | Culture and Personalization in LLMs</title>
+  <title>PACT | Whose Norms?</title>
   <meta name="description" content="Interactive project page for Whose Norms? Disentangling Cultural and Personal Alignment in Large Language Models." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,10 +15,10 @@
     <a class="brand" href="#top"><span class="brand-mark">P</span><span>PACT</span></a>
     <nav aria-label="Main navigation">
       <a href="#framework">Framework</a>
-      <a href="#results">Results</a>
+      <a href="#results">Model behavior</a>
       <a href="#human-study">Human study</a>
-      <a href="#alignment">Alignment</a>
-      <a href="#release">Release</a>
+      <a href="#alignment">Human-LLM alignment</a>
+      <a href="#cite">Citation</a>
     </nav>
   </header>
 
@@ -28,16 +28,25 @@
         <p class="eyebrow">Culture x personalization benchmark</p>
         <h1>Whose Norms?</h1>
         <p class="subtitle">Disentangling cultural and personal alignment in large language models.</p>
+        <p class="authors">Angana Borah<sup>1</sup>, Isabelle Augenstein<sup>2</sup>, Rada Mihalcea<sup>1</sup></p>
+        <p class="affiliations"><sup>1</sup>University of Michigan - Ann Arbor &nbsp; <sup>2</sup>University of Copenhagen</p>
         <p class="summary">PACT evaluates whether models follow cultural expectations or allow personal preferences when both are relevant and may conflict.</p>
         <div class="button-row">
-          <a class="button primary" href="assets/paper.pdf">Paper PDF</a>
-          <a class="button" href="#results">Explore results</a>
-          <a class="button" href="#release">Release steps</a>
+          <a class="button primary" href="assets/paper.pdf">Paper</a>
+          <a class="button" href="https://github.com/MichiganNLP/pact_culture_personalization">Code</a>
+          <a class="button disabled" href="#" aria-disabled="true">Dataset coming soon</a>
         </div>
       </div>
-      <div class="hero-panel" aria-label="PACT scenario preview">
+      <div class="hero-panel" aria-label="Animated PACT scenario visualization">
+        <div class="flow-card">
+          <div class="flow-node actor">Actor preference</div>
+          <div class="flow-line"></div>
+          <div class="flow-node scenario">PACT scenario</div>
+          <div class="flow-line teal"></div>
+          <div class="flow-node receiver">Cultural norm</div>
+        </div>
         <div class="scenario-card">
-          <span class="tag">Example PACT item</span>
+          <span class="tag">Interactive PACT item</span>
           <h2>Host-home etiquette</h2>
           <p>A guest visits a host in Japan. The cultural expectation is to remove shoes, while the guest prefers to keep shoes on.</p>
           <div class="choice-grid">
@@ -60,7 +69,11 @@
       <div>
         <p class="eyebrow">Framework</p>
         <h2>One item, two plausible actions</h2>
-        <p>Each PACT instance contains a scenario, actor, receiver, demographic attributes, a cultural expectation, and a personal preference. Models choose between <span class="pill culture">Follow Culture</span> and <span class="pill preference">Allow Preference</span>.</p>
+        <p>Each PACT instance contains a social scenario, an actor, a receiver, demographic attributes, a cultural expectation, and a personal preference. Models choose between <span class="pill culture">Follow Culture</span> and <span class="pill preference">Allow Preference</span>.</p>
+        <div class="takeaway-box">
+          <strong>Why this matters</strong>
+          <p>Culture and personalization are usually evaluated separately. PACT studies the harder case where a model must decide how to balance them.</p>
+        </div>
       </div>
       <div class="interactive-example">
         <div class="toolbar">
@@ -86,7 +99,7 @@
         </div>
         <div class="segmented" role="tablist" aria-label="Model behavior view">
           <button class="active" data-view="models">Models</button>
-          <button data-view="regions">Regions</button>
+          <button data-view="regions">Country context</button>
           <button data-view="significance">Significance</button>
         </div>
       </div>
@@ -95,22 +108,29 @@
         <div id="region-chart" class="bar-chart hidden" aria-live="polite"></div>
         <div id="significance-table" class="table-wrap hidden" aria-live="polite"></div>
       </div>
-      <figure class="figure-preview">
-        <img src="assets/section4_model_tendencies.png" alt="Model behavior plot" />
-        <figcaption>Model behavior varies much more by model family and country context than by demographic cues.</figcaption>
-      </figure>
+      <div class="takeaway-grid">
+        <div class="takeaway-box"><strong>Takeaway 1</strong><p>Model family dominates the culture/preference trade-off: Mistral and OLMo are highly norm-rigid, while Llama is more preference-allowing.</p></div>
+        <div class="takeaway-box"><strong>Takeaway 2</strong><p>Country and scenario context shift behavior more than age or gender cues, which are statistically detectable but small.</p></div>
+      </div>
     </section>
 
     <section id="human-study" class="section two-col reverse">
       <div>
         <p class="eyebrow">Human study</p>
         <h2>Humans are not a single label</h2>
-        <p>Five-country human responses show modest norm-personal gaps overall, but country-specific reversals. Same-country judgments have lower agreement than close/far contexts, indicating within-culture pluralism.</p>
+        <p>Participants from five countries answered paired survey questions for each scenario: what they would personally do, and what most people would consider socially appropriate. This separates personal choice from norm judgment rather than forcing a single ground-truth label.</p>
+        <p>Same-country judgments have lower agreement than close/far contexts, suggesting greater within-culture pluralism when people reason about their own cultural contexts.</p>
         <div id="human-country-chart" class="dot-chart"></div>
       </div>
-      <figure class="figure-preview compact">
-        <img src="assets/section5_human.png" alt="Human rates and agreement plot" />
-      </figure>
+      <div class="annotation-card">
+        <h3>Annotation questions</h3>
+        <ul>
+          <li><strong>Personal choice:</strong> What would you personally do if you were the actor?</li>
+          <li><strong>Norm judgment:</strong> What would most people in this situation consider appropriate?</li>
+          <li><strong>Agreement:</strong> How much do participants converge on the same option?</li>
+        </ul>
+        <div class="takeaway-box compact-box"><strong>Finding</strong><p>Majority labels hide meaningful disagreement, so we evaluate distributions and uncertainty in addition to majority alignment.</p></div>
+      </div>
     </section>
 
     <section id="alignment" class="section">
@@ -119,33 +139,34 @@
           <p class="eyebrow">Human-LLM alignment</p>
           <h2>Majority agreement is not enough</h2>
         </div>
-        <select id="alignment-metric" aria-label="Alignment metric">
-          <option value="majority">Majority alignment</option>
-          <option value="mae">Rate-alignment MAE</option>
-          <option value="gap">Signed culture-rate gap</option>
-          <option value="uncertainty">Uncertainty correlation</option>
-        </select>
+        <div class="segmented" role="tablist" aria-label="Alignment metric view">
+          <button class="active" data-align="majority">Majority</button>
+          <button data-align="mae">Rate MAE</button>
+          <button data-align="gap">Culture gap</button>
+          <button data-align="uncertainty">Uncertainty</button>
+        </div>
       </div>
-      <div id="alignment-chart" class="bar-chart"></div>
-      <figure class="figure-preview">
-        <img src="assets/section5_alignment.png" alt="Alignment and uncertainty plot" />
-        <figcaption>Models can match majority choices while missing response distributions and uncertainty.</figcaption>
-      </figure>
+      <div class="alignment-layout">
+        <div id="alignment-chart" class="bar-chart"></div>
+        <div id="alignment-interpretation" class="takeaway-box metric-note"></div>
+      </div>
+      <div class="takeaway-grid">
+        <div class="takeaway-box"><strong>Distributional view</strong><p>Models can match the human-majority option while missing the rate at which humans choose culture versus preference.</p></div>
+        <div class="takeaway-box"><strong>Uncertainty view</strong><p>Persona-conditioned models should vary on the same items humans disagree on, but correlations remain weak.</p></div>
+      </div>
     </section>
 
-    <section id="release" class="section release-grid">
+    <section id="cite" class="section cite-section">
       <div>
-        <p class="eyebrow">Release plan</p>
-        <h2>Clean code, site, and Hugging Face data</h2>
-        <p>This site is static and deployable with GitHub Pages. Keep model outputs and release data separate from heavy scratch artifacts; publish cleaned benchmark/data splits to Hugging Face Datasets.</p>
+        <p class="eyebrow">Citation</p>
+        <h2>Use PACT</h2>
+        <p>If you plan to use PACT, please cite our work and feel free to reach out at <a href="mailto:anganab@umich.edu">anganab@umich.edu</a> for any questions.</p>
       </div>
-      <div class="checklist">
-        <label><input type="checkbox"> Create GitHub repository</label>
-        <label><input type="checkbox"> Commit `paper_site/`, clean scripts, and README</label>
-        <label><input type="checkbox"> Enable GitHub Pages from `main` / `paper_site` or `docs`</label>
-        <label><input type="checkbox"> Create Hugging Face dataset repo</label>
-        <label><input type="checkbox"> Upload cleaned CSV/JSONL files and dataset card</label>
-      </div>
+      <pre><code>@misc{borah2026pact,
+  title={Whose Norms? Disentangling Cultural and Personal Alignment in Large Language Models},
+  author={Borah, Angana and Augenstein, Isabelle and Mihalcea, Rada},
+  year={2026}
+}</code></pre>
     </section>
   </main>
 

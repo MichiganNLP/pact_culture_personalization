@@ -1,10 +1,29 @@
 const DATA = window.PACT_DATA;
 const maxOf = (arr, key) => Math.max(...arr.map(d => Math.abs(d[key])));
 
+const alignmentNotes = {
+  majority: {
+    title: 'Majority alignment',
+    text: 'Does the model pick the same option as the human majority? This is the easiest alignment metric and can look high even when the model misses disagreement.'
+  },
+  mae: {
+    title: 'Rate-alignment MAE',
+    text: 'Does the model match the human culture-following rate? Lower is better. This metric captures distributional mismatch beyond majority choice.'
+  },
+  gap: {
+    title: 'Signed culture-rate gap',
+    text: 'Positive values mean the model over-selects culture relative to humans; negative values mean it over-selects personal preference.'
+  },
+  uncertainty: {
+    title: 'Uncertainty correlation',
+    text: 'Does model disagreement across persona-conditioned runs occur on the same items where humans disagree? Higher is better, but correlations remain weak.'
+  }
+};
+
 function barChart(el, rows, options = {}) {
   const max = options.max ?? maxOf(rows, 'value');
   el.innerHTML = rows.map(row => {
-    const v = row.value;
+    const v = Number(row.value);
     const pct = Math.min(100, Math.abs(v) / max * 100);
     const cls = v < 0 ? 'negative' : '';
     const suffix = options.suffix ?? '%';
@@ -40,22 +59,32 @@ function renderHumanChart() {
 
 function renderAlignment(metric = 'majority') {
   const el = document.querySelector('#alignment-chart');
+  let rows;
+  let suffix;
+  let max;
   if (metric === 'uncertainty') {
-    const avg = Object.values(DATA.uncertainty.reduce((acc, d) => {
-      if (!acc[d.model]) acc[d.model] = {label: d.model, vals: []};
-      if (d.corr !== null) acc[d.model].vals.push(d.corr);
-      return acc;
-    }, {})).map(d => ({label: d.label, value: +(d.vals.reduce((a,b)=>a+b,0) / d.vals.length).toFixed(3)}));
-    barChart(el, avg.sort((a,b)=>b.value-a.value), {max: .28, suffix: ''});
-    return;
+    rows = DATA.uncertaintyAvg.map(d => ({label: d.model, value: d.corr})).sort((a,b) => b.value - a.value);
+    suffix = '';
+    max = .28;
+  } else if (metric === 'mae') {
+    rows = DATA.alignmentAvg.map(d => ({label: d.model, value: d.mae})).sort((a,b) => a.value - b.value);
+    suffix = '';
+    max = .55;
+  } else if (metric === 'gap') {
+    rows = DATA.alignmentAvg.map(d => ({label: d.model, value: d.cultureGap})).sort((a,b) => b.value - a.value);
+    suffix = ' pp';
+    max = 28;
+  } else {
+    rows = DATA.alignmentAvg.map(d => ({label: d.model, value: d.majority})).sort((a,b) => b.value - a.value);
+    suffix = '%';
+    max = 90;
   }
-  const key = metric === 'majority' ? 'majority' : metric === 'mae' ? 'mae' : 'cultureGap';
-  const suffix = metric === 'mae' ? '' : metric === 'gap' ? ' pp' : '%';
-  const rows = DATA.alignment.map(d => ({label: `${d.model} ${d.frame}`, value: d[key]}));
-  barChart(el, rows, {max: metric === 'majority' ? 90 : metric === 'mae' ? .55 : 40, suffix});
+  barChart(el, rows, {max, suffix});
+  const note = alignmentNotes[metric];
+  document.querySelector('#alignment-interpretation').innerHTML = `<strong>${note.title}</strong><p>${note.text}</p>`;
 }
 
-function initTabs() {
+function initModelTabs() {
   document.querySelectorAll('[data-view]').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('[data-view]').forEach(b => b.classList.remove('active'));
@@ -63,6 +92,16 @@ function initTabs() {
       ['model-chart','region-chart','significance-table'].forEach(id => document.getElementById(id).classList.add('hidden'));
       const target = btn.dataset.view === 'models' ? 'model-chart' : btn.dataset.view === 'regions' ? 'region-chart' : 'significance-table';
       document.getElementById(target).classList.remove('hidden');
+    });
+  });
+}
+
+function initAlignmentTabs() {
+  document.querySelectorAll('[data-align]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-align]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderAlignment(btn.dataset.align);
     });
   });
 }
@@ -100,9 +139,9 @@ function initHeroChoice() {
 document.addEventListener('DOMContentLoaded', () => {
   renderModelCharts();
   renderHumanChart();
-  renderAlignment();
-  initTabs();
+  renderAlignment('majority');
+  initModelTabs();
+  initAlignmentTabs();
   initExamples();
   initHeroChoice();
-  document.querySelector('#alignment-metric').addEventListener('change', e => renderAlignment(e.target.value));
 });

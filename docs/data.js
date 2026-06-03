@@ -119,7 +119,45 @@ window.PACT_DATA = {
       "normAgreement": 69.3
     }
   ],
-  "alignment": [
+  "alignmentAvg": [
+    {
+      "model": "GPT",
+      "majority": 84.4,
+      "mae": 0.255,
+      "cultureGap": 14.5
+    },
+    {
+      "model": "Qwen",
+      "majority": 80.7,
+      "mae": 0.27,
+      "cultureGap": 18.8
+    },
+    {
+      "model": "Llama",
+      "majority": 76.1,
+      "mae": 0.319,
+      "cultureGap": 9.1
+    },
+    {
+      "model": "Mistral",
+      "majority": 71.0,
+      "mae": 0.349,
+      "cultureGap": 0.6
+    },
+    {
+      "model": "DeepSeek",
+      "majority": 63.4,
+      "mae": 0.409,
+      "cultureGap": -2.0
+    },
+    {
+      "model": "OLMo",
+      "majority": 54.5,
+      "mae": 0.471,
+      "cultureGap": -27.8
+    }
+  ],
+  "alignmentFrame": [
     {
       "model": "GPT",
       "frame": "Norm",
@@ -205,7 +243,39 @@ window.PACT_DATA = {
       "cultureGap": -37.3
     }
   ],
-  "uncertainty": [
+  "uncertaintyAvg": [
+    {
+      "model": "GPT",
+      "corr": 0.241,
+      "modelAgreement": 90.6
+    },
+    {
+      "model": "Qwen",
+      "corr": 0.194,
+      "modelAgreement": 95.9
+    },
+    {
+      "model": "Llama",
+      "corr": -0.032,
+      "modelAgreement": 96.8
+    },
+    {
+      "model": "Mistral",
+      "corr": 0.063,
+      "modelAgreement": 94.3
+    },
+    {
+      "model": "DeepSeek",
+      "corr": 0.058,
+      "modelAgreement": 91.5
+    },
+    {
+      "model": "OLMo",
+      "corr": -0.031,
+      "modelAgreement": 92.2
+    }
+  ],
+  "uncertaintyFrame": [
     {
       "model": "DeepSeek",
       "frame": "Norm",
