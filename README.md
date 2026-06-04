@@ -11,8 +11,6 @@ scripts/                  Core analysis and plotting scripts
 data/model_behavior/       Cleaned benchmark/sample instances for model-behavior analysis
 data/prompt_ablation/      Prompt-ablation release data
 data/trace_analysis/       Trace-analysis tables and qualitative examples
-results/section4/          Model-behavior summary CSVs and figure backing data
-results/section5/          Human-study and human-model alignment summary CSVs
 figures/section4/          Generated Section 4 figures
 figures/section5/          Generated Section 5 figures
 ```
