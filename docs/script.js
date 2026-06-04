@@ -1,6 +1,29 @@
 const DATA = window.PACT_DATA;
 const maxOf = (arr, key) => Math.max(...arr.map(d => Math.abs(d[key])));
 
+
+const modelViewNotes = {
+  models: {
+    title: 'Allow-preference rate',
+    text: 'Percent of valid model decisions selecting Allow Preference rather than Follow Culture.'
+  },
+  regions: {
+    title: 'Country-context effect',
+    text: 'Shift in Allow Preference rate by scenario region, shown in percentage points relative to the overall model average.'
+  },
+  significance: {
+    title: 'Significance tests',
+    text: 'Concise regression-style contrasts for demographic and interaction effects in the model-behavior analysis.'
+  }
+};
+
+function setModelViewNote(view) {
+  const note = modelViewNotes[view];
+  const el = document.querySelector('#model-chart-note');
+  if (!note || !el) return;
+  el.innerHTML = `<strong>${note.title}</strong><p>${note.text}</p>`;
+}
+
 const alignmentNotes = {
   majority: {
     title: 'Majority alignment',
@@ -36,6 +59,7 @@ function barChart(el, rows, options = {}) {
 }
 
 function renderModelCharts() {
+  setModelViewNote('models');
   barChart(document.querySelector('#model-chart'), DATA.modelBehavior.map(d => ({label: d.model, value: d.allow})), {max: 40});
   barChart(document.querySelector('#region-chart'), DATA.regionEffects.map(d => ({label: d.region, value: d.delta})), {max: 6, suffix: ' pp'});
   const sig = document.querySelector('#significance-table');
@@ -90,7 +114,9 @@ function initModelTabs() {
       document.querySelectorAll('[data-view]').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       ['model-chart','region-chart','significance-table'].forEach(id => document.getElementById(id).classList.add('hidden'));
-      const target = btn.dataset.view === 'models' ? 'model-chart' : btn.dataset.view === 'regions' ? 'region-chart' : 'significance-table';
+      const view = btn.dataset.view;
+      setModelViewNote(view);
+      const target = view === 'models' ? 'model-chart' : view === 'regions' ? 'region-chart' : 'significance-table';
       document.getElementById(target).classList.remove('hidden');
     });
   });

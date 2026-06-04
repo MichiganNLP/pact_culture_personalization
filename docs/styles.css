@@ -98,6 +98,9 @@ h3 { margin: 0 0 10px; font-size: 21px; }
 .segmented button { padding: 9px 12px; border: 0; background: transparent; }
 .segmented button.active { background: white; box-shadow: 0 4px 12px rgba(73,49,124,.10); }
 .chart-shell { padding: 18px; }
+.chart-note { margin: 0 0 14px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: rgba(244,239,255,.65); }
+.chart-note strong { display: block; color: #4c1d95; font-size: 15px; margin-bottom: 2px; }
+.chart-note p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.45; }
 .bar-chart { display: grid; gap: 12px; }
 .bar-row { display: grid; grid-template-columns: minmax(210px, 300px) minmax(0, 1fr) 70px; gap: 12px; align-items: center; }
 .bar-label { font-weight: 750; line-height: 1.2; overflow-wrap: anywhere; }
