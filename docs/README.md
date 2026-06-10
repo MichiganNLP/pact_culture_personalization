@@ -1,30 +1,47 @@
 # PACT Paper Website
 
-Static project page for **Whose Norms? Disentangling Cultural and Personal Alignment in Large Language Models**.
+Static GitHub Pages site for **Whose Norms? Disentangling Cultural and Personal Alignment in Large Language Models**.
 
-## Local preview
+## Public Links
 
-Open `index.html` directly in a browser. No build step is required because the compact data are embedded in `data.js`.
+- Paper: https://arxiv.org/pdf/2606.07877
+- Code: https://github.com/MichiganNLP/pact_culture_personalization
+- Dataset: https://huggingface.co/datasets/Angana192/pact-culture-personalization
 
-If you prefer a local server:
+## Local Preview
+
+No build step is required. From the repository root, run:
 
 ```bash
-cd paper_site
-python3 -m http.server 8000
+python3 -m http.server 8000 --directory docs
 ```
 
-Then visit `http://localhost:8000`.
+Then open `http://localhost:8000`.
 
 ## Files
 
-- `index.html`: page structure
-- `styles.css`: lilac/lavender/teal theme
-- `script.js`: interactive charts, tabs, example carousel
-- `data.js`: compact generated data from paper result CSVs
-- `assets/`: paper PDF and selected plot images
-- `github_hf_release_steps.md`: GitHub and Hugging Face release checklist
-- `dataset_card_template.md`: starter Hugging Face dataset card
+- `index.html`: page structure and public resource links
+- `styles.css`: site styling
+- `script.js`: interactive charts, tabs, and example carousel
+- `data.js`: compact data used by the interactive charts
+- `assets/`: static assets retained by the project
 
-## Regenerate
+## Publish With GitHub Pages
 
-The site was generated from local result files in the parent repository. If result CSVs change, rerun the local builder used in this session or rebuild `data.js` from the same CSVs.
+The repository should be configured under **Settings > Pages** with:
+
+- Source: `Deploy from a branch`
+- Branch: `main`
+- Folder: `/docs`
+
+After editing the site, commit and push the `docs/` directory:
+
+```bash
+git status
+git add docs
+git commit -m "Update paper and dataset links"
+git pull --rebase origin main
+git push origin main
+```
+
+GitHub Pages normally updates within a few minutes. If the old page remains visible, hard-refresh the browser.
