@@ -1,6 +1,6 @@
 # PACT: Personal-Preference and Cultural-Norm Trade-off
 
-Code and lightweight result artifacts for **Whose Norms? Disentangling Cultural and Personal Alignment in Large Language Models**.
+Code and lightweight result artifacts for **Whose Norms? Disentangling Cultural and Personal Alignment in Large Language Models**. (Accepted to EMNLP 2026 Main Oral) 
 
 PACT evaluates whether language models choose to follow a cultural norm or allow a personal preference when the two are in tension.
 
@@ -40,9 +40,10 @@ This release folder intentionally excludes raw scratch outputs, Slurm logs, API 
 ## Citation
 
 ```bibtex
-@misc{borah2026pact,
+@article{borah2026whose,
   title={Whose Norms? Disentangling Cultural and Personal Alignment in Large Language Models},
   author={Borah, Angana and Augenstein, Isabelle and Mihalcea, Rada},
+  journal={arXiv preprint arXiv:2606.07877},
   year={2026}
 }
 ```
